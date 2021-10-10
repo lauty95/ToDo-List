@@ -23,7 +23,7 @@ function TodoForm(props) {
       }, props.user)
       setInput('')
     } else {
-      props.updateTodo(props.edit.id, input)
+      props.updateTodo(props.edit.id, props.user.email ,input)
     }
   }
 

@@ -16,19 +16,17 @@ function Todo(props) {
         props.actualizar(id, text)
     }
 
-    console.log(props.todos)
-
-    return props.todos.map((a, index) => (
-        <div className={a.todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
-            <div key={a.todo.id} onClick={() => props.completeTodo(a.todo.id)}>
-                {a.todo.text}
+    return props.todos.map((todo, index) => (
+        <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
+            <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
+                {todo.text}
             </div>
             <div className='icons'>
                 <RiCloseCircleLine
-                    onClick={() => props.removeTodo(a.todo.id)}
+                    onClick={() => props.removeTodo(todo.id, props.user.email)}
                     className='delete-icon' />
                 <TiEdit
-                    onClick={() => actualizar(a.todo)}
+                    onClick={() => actualizar(todo)}
                     className='edit-icon' />
             </div>
         </div>

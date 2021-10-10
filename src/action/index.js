@@ -1,7 +1,7 @@
 import { INICIAR_SESION, ADD_TODO, REMOVE_TODO, UPDATE_TODO, COMPLETE_TODO, ACTUALIZAR, TRAER_TODOS } from './type'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { db } from './../Firebase/firebase'
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, deleteDoc, updateDoc } from "firebase/firestore";
 
 export function signIn() {
     return function (dispatch) {
@@ -10,7 +10,6 @@ export function signIn() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 dispatch(login(result))
-                console.log(result)
             }).catch((error) => {
                 console.log(error)
                 return alert("Error code: ", error.code)
@@ -28,20 +27,13 @@ export function login(data) {
 
 export function addTodo(todo, user) {
     return async function (dispatch) {
-        try {
-            await addDoc(collection(db, user.email), {
-                todo
-            })
-
-        } catch (e) {
-            console.log(e)
-        }
+        const tasRef = doc(db, user.email, (todo.id).toString())
+        await setDoc(tasRef, todo)
         dispatch(guardarToDo(todo))
     }
 }
 
 function guardarToDo(todo) {
-    console.log('todo: ', todo)
     return {
         type: ADD_TODO,
         payload: todo
@@ -66,14 +58,29 @@ function dataTodos(data) {
     }
 }
 
-export function removeTodo(id) {
+export function removeTodo(id, email) {
+    return async function (dispatch) {
+        await deleteDoc(doc(db, email, (id).toString()))
+        dispatch(elimiarTodo(id))
+    }
+}
+
+function elimiarTodo(id) {
     return {
         type: REMOVE_TODO,
         payload: id
     }
 }
 
-export function updateTodo(id, value) {
+export function updateTodo(id, email, value) {
+    return async function (dispatch) {
+        const todoToUpdate = doc(db, email, (id).toString())
+        await updateDoc(todoToUpdate, { text: value })
+        dispatch(actualizarTodo(id, value))
+    }
+}
+
+function actualizarTodo(id, value) {
     return {
         type: UPDATE_TODO,
         payload: { id, text: value }
