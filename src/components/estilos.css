@@ -105,7 +105,11 @@
     border-radius: 5px;
     width: 90%;
   }
-  
+
+  .todo-row:hover{
+    cursor: pointer;
+  }
+
   .todo-row:nth-child(4n + 1) {
     background: linear-gradient(
       90deg,

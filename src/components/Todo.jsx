@@ -17,8 +17,9 @@ function Todo(props) {
     }
 
     return props.todos.map((todo, index) => (
-        <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
-            <div key={todo.id} onClick={() => props.completeTodo(todo.id, props.user.email, todo.isComplete ? false : true  )}>
+        <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}
+            onClick={() => props.completeTodo(todo.id, props.user.email, todo.isComplete ? false : true)}>
+            <div key={todo.id}>
                 {todo.text}
             </div>
             <div className='icons'>
