@@ -87,7 +87,15 @@ function actualizarTodo(id, value) {
     }
 }
 
-export function completeTodo(id) {
+export function completeTodo(id, email, value) {
+    console.log(value)
+    return async function (dispatch) {
+        const todoToUpdate = doc(db, email, (id).toString())
+        await updateDoc(todoToUpdate, { isComplete: value })
+        dispatch(tacharTarea(id))
+    }
+}
+function tacharTarea(id){
     return {
         type: COMPLETE_TODO,
         payload: id
