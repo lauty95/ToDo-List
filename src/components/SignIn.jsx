@@ -5,6 +5,10 @@ import { bindActionCreators } from 'redux';
 
 function SignIn(props) {
 
+    if (props.user.displayName !== ''){
+        props.traerTodos(props.user.email)
+    }
+
     return (
         <div>
             {

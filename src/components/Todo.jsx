@@ -16,17 +16,19 @@ function Todo(props) {
         props.actualizar(id, text)
     }
 
-    return props.todos.map((todo, index) => (
-        <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
-            <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
-                {todo.text}
+    console.log(props.todos)
+
+    return props.todos.map((a, index) => (
+        <div className={a.todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
+            <div key={a.todo.id} onClick={() => props.completeTodo(a.todo.id)}>
+                {a.todo.text}
             </div>
             <div className='icons'>
                 <RiCloseCircleLine
-                    onClick={() => props.removeTodo(todo.id)}
+                    onClick={() => props.removeTodo(a.todo.id)}
                     className='delete-icon' />
                 <TiEdit
-                    onClick={() => actualizar(todo)}
+                    onClick={() => actualizar(a.todo)}
                     className='edit-icon' />
             </div>
         </div>
@@ -36,7 +38,8 @@ function Todo(props) {
 function mapStateToProps(state) {
     return {
         todos: state.todos,
-        edit: state.edit
+        edit: state.edit,
+        user: state.user
     }
 }
 

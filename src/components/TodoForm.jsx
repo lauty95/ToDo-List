@@ -18,8 +18,9 @@ function TodoForm(props) {
     if (!props.edit) {
       props.addTodo({
         id: Math.floor(Math.random() * 10000),
-        text: input
-      })
+        text: input,
+        isComplete: false
+      }, props.user)
       setInput('')
     } else {
       props.updateTodo(props.edit.id, input)

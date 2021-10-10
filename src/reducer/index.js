@@ -1,4 +1,4 @@
-import { INICIAR_SESION, ADD_TODO, REMOVE_TODO, UPDATE_TODO, COMPLETE_TODO, ACTUALIZAR } from './../action/type'
+import { INICIAR_SESION, ADD_TODO, REMOVE_TODO, UPDATE_TODO, COMPLETE_TODO, ACTUALIZAR, TRAER_TODOS } from './../action/type'
 
 const initialState = {
     user: { displayName: '', photoURL: '' },
@@ -42,10 +42,15 @@ function reducer(state = initialState, { type, payload }) {
                 todos: updateTodos
             }
         case ACTUALIZAR:
-            let act = {id: payload.id, value: payload.value }
+            let act = { id: payload.id, value: payload.value }
             return {
                 ...state,
                 edit: act
+            }
+        case TRAER_TODOS:
+            return {
+                ...state,
+                todos: payload
             }
         default:
             return state;
