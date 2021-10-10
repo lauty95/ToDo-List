@@ -10,7 +10,9 @@ export function signIn() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 dispatch(login(result))
-            }).catch((error) => {
+                dispatch(traerTodos((result.user.email)))
+            })
+            .catch((error) => {
                 console.log(error)
                 return alert("Error code: ", error.code)
             });
@@ -88,7 +90,6 @@ function actualizarTodo(id, value) {
 }
 
 export function completeTodo(id, email, value) {
-    console.log(value)
     return async function (dispatch) {
         const todoToUpdate = doc(db, email, (id).toString())
         await updateDoc(todoToUpdate, { isComplete: value })

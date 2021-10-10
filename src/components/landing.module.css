@@ -1,0 +1,37 @@
+.cajaInicioSesion {
+    height: 200px;
+    width: 350px;
+    background-color: rgba(190, 190, 206, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    padding-top: 80px;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+}
+
+.boton button {
+    display: inline-block;
+    background: white;
+    height: 30px;
+    color: #444;
+    width: 190px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+}
+
+.boton button:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .cajaInicioSesion{
+        margin-top: 40%;
+    }
+}

@@ -145,3 +145,18 @@
   .edit-icon {
     color: #fff;
   }
+
+  @media screen and (max-width: 768px) {
+
+    .todo-app {
+      width: auto;
+      margin-top: 30px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .todo-input {
+      width: 220px;
+    }
+
+  }

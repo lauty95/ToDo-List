@@ -1,16 +1,13 @@
-import './App.css'
-import SignIn from './components/SignIn';
+import Landing from './components/Landing';
+import { Route } from 'react-router-dom'
 import TodoList from './components/TodoList'
 import { firebase } from './Firebase/firebase';
 
 function App() {
   return (
     <>
-      <SignIn />
-      <div className='todo-app'>
-        <h1>What's the Plan for Today?</h1>
-        <TodoList />
-      </div>
+      <Route path="/" component={Landing} exact />
+      <Route path="/home" component={TodoList} exact />
     </>
   );
 }

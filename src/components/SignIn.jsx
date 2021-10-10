@@ -2,18 +2,14 @@ import React from 'react'
 import * as actionCreators from './../action'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import s from './landing.module.css'
 
 function SignIn(props) {
-
-    if (props.user.displayName !== ''){
-        props.traerTodos(props.user.email)
-    }
-
     return (
-        <div>
+        <div className={s.boton}>
             {
                 props.user.displayName === '' ?
-                    <button onClick={props.signIn}>Sign In</button>
+                    <button onClick={props.signIn}>Sign In with Google</button>
                     :
                     <>
                         <img alt="foto usuario" src={props.user.photoURL} height="60px" width="60px" />
