@@ -6,17 +6,20 @@ import s from './landing.module.css'
 
 function SignIn(props) {
     return (
-        <div className={s.boton}>
-            {
-                props.user.displayName === '' ?
-                    <button onClick={props.signIn}>Sign In with Google</button>
-                    :
-                    <>
-                        <img alt="foto usuario" src={props.user.photoURL} height="60px" width="60px" />
-                        <p>Hola! {props.user.displayName}</p>
-                    </>
-            }
+        <div>
+            <h1>Cuáles son los planes para hoy?</h1>
+            <div className={s.boton}>
+                {
+                    props.user.displayName === '' ?
+                        <button onClick={props.signIn}>Iniciar sesión con Google</button>
+                        :
+                        <>
+                            <img alt="foto usuario" src={props.user.photoURL} height="60px" width="60px" />
+                            <p>Hola! {props.user.displayName}</p>
+                        </>
+                }
 
+            </div>
         </div>
     )
 }

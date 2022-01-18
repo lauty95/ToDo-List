@@ -12,7 +12,7 @@ function TodoList(props) {
     return (
         <>
             <div className='todo-app'>
-                <h1>What's the Plan for Today?</h1>
+                <h1>Cuáles son tus planes hoy?</h1>
                 <TodoForm />
                 <Todo todos={props.todos} />
             </div>
